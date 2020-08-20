@@ -1,3 +1,4 @@
+from random import randint
 from time import sleep
 
 
@@ -68,4 +69,10 @@ class LightEmittingDiode:
             )
         sleep(2)
         self.brightness_level = brightness_level
+
+
+class Altimeter:
+    def get_altitude(self):
+        sleep(1)
+        return randint(0, 3000)
 
