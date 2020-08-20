@@ -39,3 +39,33 @@ class Hexacopter:
         sleep(3)
         return HexacopterStatus(self.get_motor_speed(), self.is_turned_on())
 
+
+class LightEmittingDiode:
+    MIN_BRIGHTNESS_LEVEL = 0
+    MAX_BRIGHTNESS_LEVEL = 255
+
+    def __init__(self, identifier, description):
+        self.identifier = identifier
+        self.description = description
+        self.brightness_level = self.__class__.MIN_BRIGHTNESS_LEVEL
+
+    def get_brightness_level(self):
+        sleep(1)
+        return self.brightness_level
+
+    def set_brightness_level(self, brightness_level):
+        if brightness_level < self.__class__.MIN_BRIGHTNESS_LEVEL:
+            raise ValueError(
+                "The minimum brightness level is {0}".format(
+                    self.__class__.MIN_BRIGHTNESS_LEVEL
+                )
+            )
+        if brightness_level > self.__class__.MAX_BRIGHTNESS_LEVEL:
+            raise ValueError(
+                "The maximum brightness level is {0}".format(
+                    self.__class__.MAX_BRIGHTNESS_LEVEL
+                )
+            )
+        sleep(2)
+        self.brightness_level = brightness_level
+
