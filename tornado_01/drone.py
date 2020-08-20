@@ -76,3 +76,14 @@ class Altimeter:
         sleep(1)
         return randint(0, 3000)
 
+
+class Drone:
+    def __init__(self):
+        self.hexacopter = Hexacopter()
+        self.altimeter = Altimeter()
+        self.blue_led = LightEmittingDiode(1, "Blue LED")
+        self.white_led = LightEmittingDiode(2, "White LED")
+        self.leds = {
+            self.blue_led.identifier: self.blue_led,
+            self.white_led.identifier: self.white_led,
+        }
