@@ -112,3 +112,19 @@ class LedHandler(web.RequestHandler):
             response = {"error": e.args[0]}
             self.write(response)
 
+
+class AltimeterHandler(web.RequestHandler):
+    SUPPORTED_METHODS = "GET"
+    ALTIMETER_ID = 1
+
+    def get(self, id):
+        if int(id) is not self.__class__.ALTIMETER_ID:
+            self.set_status(status.HTTP_404_NOT_FOUND)
+            return
+        print("I've started retrieving the altitude")
+        altitude = drone.altimeter.get_altitude()
+        print("I've finished retrieving the altitude")
+        response = {"altitude": altitude}
+        self.set_status(status.HTTP_200_OK)
+        self.write(response)
+
