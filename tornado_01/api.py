@@ -138,3 +138,9 @@ application = web.Application(
     debug=True,
 )
 
+
+if __name__ == "__main__":
+    port = 8888
+    print("Listening at port {0}".format(port))
+    application.listen(port)
+    ioloop.IOLoop.instance().start()
