@@ -128,3 +128,13 @@ class AltimeterHandler(web.RequestHandler):
         self.set_status(status.HTTP_200_OK)
         self.write(response)
 
+
+application = web.Application(
+    [
+        (r"/hexacopters/([0-9]+)", HexacopterHandler),
+        (r"/leds/([0-9]+)", LedHandler),
+        (r"/altimeters/([0-9]+)", AltimeterHandler),
+    ],
+    debug=True,
+)
+
